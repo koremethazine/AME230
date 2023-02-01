@@ -105,3 +105,7 @@ function draw() {
   strokeWeight(mouseX/20);
   line(200,145,275,185);
   line(325,185,400,145);
+  
+  
+  
+}
