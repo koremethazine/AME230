@@ -1,0 +1,93 @@
+//
+// Bounce1
+// A simple bouncing ball - it has perfect bounces,
+// it never slows down.
+
+//draw a rectangle as the barrier then change the constants, 
+// changeColor function 
+
+// These variables store the position, size, and speed.
+let positionX = 300;
+let positionY = 300;
+let radius = 20;
+let velocityX = 3;
+let velocityY = 5;
+let ballColor1 = 255;
+let ballColor2 =255;
+let ballColor3 = 255;
+
+function setup() {
+  createCanvas(600, 600);
+
+  
+}
+function drawBackground(){
+  background(245, 181, 236);
+  rectMode(RADIUS);
+  strokeWeight(10);
+  fill(255, 217, 250);
+  rect(300, 300, 200, 200);
+}
+  // move the ball
+  function moveBall(){
+    positionX = positionX + velocityX;
+    positionY = positionY + velocityY;
+  
+    const rightEdge = width -100;
+    const leftEdge = 100;
+    const topEdge = 100;
+    const bottomEdge = height -100;
+  
+    // test to see if it hit an edge
+    if (positionX + radius > rightEdge) {
+      // hit the right edge
+      changeColor();
+      velocityX = velocityX * -1;
+      positionX = rightEdge - radius;
+    }
+    else if (positionX - radius < leftEdge) {
+      // hit the left edge
+     changeColor();
+      velocityX = velocityX * -1;
+      positionX = leftEdge + radius;
+    }
+  
+    if (positionY + radius > bottomEdge) {
+      // hit the bottom edge
+     changeColor();
+      velocityY = velocityY * -1;
+      positionY = bottomEdge - radius;
+    }
+    else if (positionY - radius < topEdge){
+      // hit the top edge
+      changeColor();
+      velocityY = velocityY * -1;
+      positionY = topEdge + radius;
+    }
+  }
+  
+   // draw the ball
+  function drawBall(){
+    fill(ballColor1, ballColor2, ballColor3);
+    ellipse(positionX, positionY, radius * 2, radius * 2);
+    }
+    
+    function changeColor(){
+      ballColor1 = random(0,255);
+      ballColor2 = random(0,255);
+      ballColor3 = random(0,255);
+    }
+    
+function draw() {
+  drawBackground();
+  moveBall();
+  drawBall();
+}
+  //make new border , move ball function, then change color 
+  
+
+
+
+  
+  
+
