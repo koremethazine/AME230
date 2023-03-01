@@ -1,0 +1,43 @@
+// sketch.js multiple circles being made 
+
+function setup() {
+  createCanvas(600, 600);
+  shapes = [];
+  for(let i =0; i < 100; i+= 1){
+    let x= random(0, width);
+    let y = random(0, height);
+    let r = random(20,100);
+    let s = new Shape(x, y, r);
+
+    //add the new Shape object to the array
+    shapes.push(s);
+
+  }
+
+}
+
+function draw() {
+  background(252, 199, 244);
+  
+  for(let i =0; i < 100; i+= 1){
+    shapes[i].render();
+  }
+  noLoop();
+}
+
+class Shape{
+  constructor(x,y,radius){
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.size = this.radius * 2;
+    this.fillColor = color(random(200,255), random(80,100), random(170,200));
+  }
+  render(){
+    stroke(0);
+    strokeWeight(10);
+    fill(this.fillColor);
+    ellipse(this.x, this.y, this.size, this.size);
+  }
+}
+
